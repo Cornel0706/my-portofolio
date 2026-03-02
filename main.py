@@ -13,7 +13,7 @@ app.config['BASIC_AUTH_USERNAME'] = os.getenv('BASIC_AUTH_USERNAME', 'admin')
 app.config['BASIC_AUTH_PASSWORD'] = os.getenv('BASIC_AUTH_PASSWORD', 'parola_secreta') 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', os.urandom(24))
 #DATABASE CONFIG
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///instance/pgitrojects.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///instance/projects.db')
 
 ckeditor = CKEditor(app) 
 db = SQLAlchemy(app)
