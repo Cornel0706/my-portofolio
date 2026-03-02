@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config['BASIC_AUTH_USERNAME'] = os.getenv('BASIC_AUTH_USERNAME', 'admin')
 app.config['BASIC_AUTH_PASSWORD'] = os.getenv('BASIC_AUTH_PASSWORD', 'parola_secreta') 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', os.urandom(24))
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///projects.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///instance/projects.db')
 ckeditor = CKEditor(app) 
 db = SQLAlchemy(app)
 basic_auth = BasicAuth(app)
@@ -26,8 +26,8 @@ class Project(db.Model):
     img_url = db.Column(db.String(200), nullable=False)
     github_url = db.Column(db.String(200), nullable=False)
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 #Home page route with all projects
 @app.route('/')
