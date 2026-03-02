@@ -5,7 +5,8 @@ from forms import AddProjectForm
 from flask_ckeditor import CKEditor, CKEditorField
 from flask_basicauth import BasicAuth
 
-
+if not os.path.exists('instance'):
+    os.makedirs('instance')
 
 app = Flask(__name__)
 app.config['BASIC_AUTH_USERNAME'] = os.getenv('BASIC_AUTH_USERNAME', 'admin')
