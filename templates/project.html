@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project.title }} | Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+    body { background-color: #111111; color: #ccc; font-family: 'JetBrains Mono', monospace; }
+
+    h1 { 
+        font-family: 'Syne', sans-serif; 
+        font-size: 3rem; 
+        color: #fff; 
+        text-transform: uppercase; 
+        letter-spacing: -2px; 
+    }
+
+    .project-header-img {
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* Să se vadă toată poza */
+        border: 1px solid #222;
+        margin: 30px 0;
+    }
+
+    .readme-box {
+        background-color: #0f0f0f;
+        border: 1px solid #222;
+        padding: 40px;
+        line-height: 1.8;
+    }
+
+    .project-description {
+        white-space: pre-wrap; 
+        color: #aaa;
+    }
+
+    .back-link {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .back-link:hover { color: #fff; }
+
+    .github-link {
+        display: inline-block;
+        margin-top: 30px;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 10px 25px;
+        text-decoration: none;
+    }
+
+    p.text-muted, .project-date-detail { 
+    color: #888 !important; /* Un gri mai deschis */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    margin-top: -10px; /* Ca să fie mai aproape de titlu */
+    display: block;
+}
+    
+    .github-link:hover { background-color: #fff; color: #000; }
+</style>
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            
+            <a href="{{ url_for('index') }}" class="back-link">← Back to Portfolio</a>
+            
+            <h1 class="text-white mt-4 mb-2">{{ project.title }}</h1>
+            <p class="text-muted mb-4">{{ project.date }}</p>
+
+            <img src="{{ project.img_url }}" class="project-header-img" alt="{{ project.title }}">
+
+            <div class="readme-container">
+                <h3 class="text-white mb-4">Project Overview</h3>
+                
+                <div class="project-description">
+                    {{ project.description | safe }}
+                </div>
+
+                <hr class="mt-5 mb-4" style="border-color: #333;">
+
+                <!-- <div class="features-section mt-5">
+                    <h4 class="text-white mb-3">Key Features</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><span class="text-success">✔</span> Real-time data processing</li>
+                        <li class="mb-2"><span class="text-success">✔</span> Custom encryption algorithms</li>
+                        <li class="mb-2"><span class="text-success">✔</span> Secure user authentication</li>
+                    </ul>
+                </div> -->
+
+                <div class="d-flex gap-3">
+                    <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-light px-4">
+                        View Code on GitHub
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

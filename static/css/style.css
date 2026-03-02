@@ -1,0 +1,127 @@
+/* --- CONFIGURARE VARIABILE --- */
+:root {
+    --bg-dark: #111111;
+    --card-bg: #111111;
+    --accent-white: #ffffff;
+    --text-gray: #a0a0a0;
+    --border-soft: #222222;
+}
+
+/* --- RESET ȘI BAZĂ --- */
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text-gray); 
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- TIPOGRAFIE --- */
+h1, h2, .navbar-brand {
+    font-family: 'Syne', sans-serif;
+    color: var(--accent-white);
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+/* --- NAVBAR (STATIC - DISPARE LA SCROLL) --- */
+.navbar { 
+    background-color: black;
+    border-bottom: 1px solid var(--border-soft); 
+    padding: 30px 0;
+    position: relative; /* Nu e sticky */
+    z-index: 100;
+}
+
+/* --- GRID ȘI CARDURI --- */
+.project-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 0;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    position: relative;
+}
+
+/* Hover pe card: doar bordura și o mică ridicare */
+.project-card:hover {
+    border-color: #444;
+    transform: translateY(-5px);
+    z-index: 1; /* Îl ridicăm puțin peste restul */
+}
+
+.card-img-top {
+    filter: grayscale(100%);
+    transition: 0.5s ease;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.project-card:hover .card-img-top {
+    filter: grayscale(0%);
+}
+
+.card-title {
+    font-family: 'Syne', sans-serif;
+    color: var(--accent-white);
+    letter-spacing: -1px;
+    margin-top: 10px;
+}
+
+/* --- BUTOANE ȘI LINK-URI (INTERACȚIUNE) --- */
+
+/* Forțăm link-urile să fie deasupra oricărui strat de animație al cardului */
+.project-card a {
+    position: relative;
+    z-index: 10; 
+}
+
+/* Buton Details */
+.btn-details {
+    font-family: 'JetBrains Mono', monospace;
+    border: 1px solid var(--accent-white);
+    color: var(--accent-white);
+    padding: 10px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn-details:hover {
+    background-color: var(--accent-white);
+    color: var(--bg-dark);
+}
+
+/* --- GITHUB ICON HIGHLIGHT (FIXED) --- */
+.github-link-wrapper {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    line-height: 0; /* Elimină spațiile de sub imagine */
+}
+
+.github-icon {
+    filter: invert(1) opacity(0.5); /* Pleacă de la alb-gri stins */
+    transition: all 0.3s ease;
+}
+
+/* Highlight-ul specific când ești cu mouse-ul pe iconiță */
+.github-link-wrapper:hover .github-icon {
+    filter: invert(1) opacity(1) drop-shadow(0 0 8px rgba(255,255,255,0.6));
+    transform: scale(1.2);
+}
+
+/* --- CONTACT SECTION --- */
+.contact-section {
+    padding: 100px 0;
+    border-top: 1px solid var(--border-soft);
+    background-color: #000;
+}
+
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: #333; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-white); }
